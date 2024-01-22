@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css">
+    <title>IMC calculator</title>
+  </head>
+  <body>
+    <div class="text-center mt-3">
+      <h4>IMC calculator</h4>
+    </div>
+    <div class="row ms-4 mt-5">
+      <div class="col col-lg-6">
+        <p>Los campos con el símbolo&nbsp;<b class="text-danger">*</b> son obligatorios</p>
+        <form>
+          <div class="mb-3">
+            <label for="weightTxt" class="form-label">Peso:&nbsp;<b class="text-danger">*</b></label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="weightTxt"
+              required
+              onkeypress="return signal(event)"
+              onkeyup="btnValidation()"
+            />
+            <div id="weightHelp" class="form-text">
+              El peso debe ser dado en kilogramos
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="heightTxt" class="form-label">Altura:&nbsp;<b class="text-danger">*</b></label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="heightTxt"
+              required
+              onkeypress="return signal(event)"
+              onkeyup="btnValidation()"
+            />
+            <div id="heightHelp" class="form-text">
+              La altura debe ser dada en metros
+            </div>
+          </div>
+        </form>
+        <div id="result">
+          
+        </div>
+        <button
+          type="submit"
+          onclick="calculateImc()"
+          class="btn btn-primary mt-3"
+          id="save"
+          disabled
+        >
+          Calcular
+        </button>
+        <button onclick="clearAll()" class="btn btn-primary mt-3" id="clear">
+          Limpiar
+        </button>
+      </div>
+      <div class="col col-lg-6">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Indicator color</th>
+              <th scope="col">IMC status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" id="yellow-bp">Amarillo -> imc menor a 18.4</th>
+              <td>Bajo peso</td>
+            </tr>
+            <tr>
+              <th scope="row" id="green-n">Verde -> imc de 18.5 a 24.9</th>
+              <td>Normal</td>
+            </tr>
+            <tr>
+              <th scope="row" id="orange-sp">Naranja -> imc de 25 a 29.9</th>
+              <td>Sobre peso</td>
+            </tr>
+            <tr>
+              <th scope="row" id="red-o">Rojo -> imc mayor a 30</th>
+              <td>Obesidad</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="function.js"></script>
+  </body>
+</html>
